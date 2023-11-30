@@ -65,17 +65,17 @@ export default {
     </h1>
     <section v-if="contact" class="contact-edit">
         <form @submit.prevent="onSaveContact">
-            <input v-model="contact.name" type="text" autofocus>
-            <input v-model="contact.email" type="text">
-            <input v-model="contact.phone" type="text">
+            <input placeholder="Name" v-model="contact.name" type="text" autofocus>
+            <input  placeholder="email" v-model="contact.email" type="text">
+            <input  placeholder="Phone" v-model="contact.phone" type="text">
             <button>Save</button>
         </form>
     </section>
     <img v-else src="../assets/puff.svg" alt="" class="loader">
 </template>
 <script>
-import { contactService } from '../services/contact.service';
-import { eventBus } from '../services/eventBus.service';
+import { contactService } from '../services/contact.service'
+import { eventBus } from '../services/eventBus.service'
 export default {
     data() {
         return {
