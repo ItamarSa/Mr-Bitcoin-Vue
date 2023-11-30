@@ -1,13 +1,28 @@
 <script>
-import AppHeader from './cmps/AppHeader.vue';
+import AppHeader from './cmps/AppHeader.vue'
+import AppFooter from './cmps/AppFooter.vue'
+
+export default {
+  components: {
+    AppHeader,
+    AppFooter,
+  }
+}
 </script>
 
 <template>
   <AppHeader />
-  <RouterView />
+  <main>
+    <RouterView />
+  </main>
+  <AppFooter />
 </template>
 
 <style scoped>
+main {
+  min-height: 87.59vh;
+}
+
 /* header {
   line-height: 1.5;
   max-height: 100vh;
