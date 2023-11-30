@@ -17,7 +17,7 @@ async function query() {
 
     console.log(contacts)
     if (!contacts || !contacts.length) {
-        contacts = _createDefaultContacts()
+        contacts = _createContacts()
         await dbService.insert(KEY, contacts)
     }
     return contacts
@@ -47,6 +47,7 @@ function getEmptyContact() {
 
 function _createDefaultContacts() {
     return [
+        
         _createContact('Ochoa Hyde','ochoahyde@renovize.com', '+1 (968) 593-3824', 50),
         _createContact('Hallie Mclean','halliemclean@renovize.com', '+1 (948) 464-2888', 73),
         _createContact('Parsons Norris','parsonsnorris@renovize.com', '+1 (958) 502-3495', 63),
