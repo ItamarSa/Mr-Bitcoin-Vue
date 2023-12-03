@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import {contactService} from '../services/contact.service.js'
+// import {contactService} from '../services/contact.service.js'
 import {eventBus} from '../services/eventBus.service.js'
 
 import ContactList from '../cmps/contactlist.vue'
@@ -18,7 +18,7 @@ import ContactFilter from '../cmps/ContactFilter.vue'
 export default {
     data() {
         return {
-            contacts: null,
+            // contacts: null,
             filterBy: {txt: ''}
 
 
@@ -26,11 +26,17 @@ export default {
     },
     methods: {
         async removeContact(contactId) {
-            await contactService.remove(contactId)
-            const idx = this.contacts.findIndex(contact => contact._id === contactId)
-            this.contacts.splice(idx, 1)
+            try {
+                await this.$store.dispatch({type: 'removeContact', contactId})
+                eventBus.emit('user-msg', `Contact ${contactId} deleted...`)
+            } catch(err) {
+                eventBus.emit('user-msg', 'Couldn\'t remove contact..')
 
-            eventBus.emit('user-msg', `Contact ${contactId} deleted...`)
+            }
+            // await contactService.remove(contactId)
+            // const idx = this.contacts.findIndex(contact => contact._id === contactId)
+            // this.contacts.splice(idx, 1)
+
 
         },
         setFilterBy(filterBy) {
@@ -38,13 +44,22 @@ export default {
         }
     },
     computed: {
+        contacts() {
+            return this.$store.getters.contacts
+        },
         filteredContacts() {
             const regex = new RegExp(this.filterBy.txt, 'i')
             return this.contacts.filter(contact => regex.test(contact.name))
         }
     },
     async created() {
-        this.contacts = await contactService.query()
+    //     this.contacts = await contactService.query()
+    try {
+        this.$store.dispatch({ type: 'loadContacts' })
+    } catch (err) {
+        eventBus.emit('user-msg', 'Couldn\'t get contacts..')
+    }
+
 
     },
     components:{

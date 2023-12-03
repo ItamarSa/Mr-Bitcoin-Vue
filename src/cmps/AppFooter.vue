@@ -1,6 +1,6 @@
 <template>
 	<footer class="app-footer">
-        <p>Coffeerights 2023</p>
+        <p>Copyrights 2023</p>
 	</footer>
 </template>
 
@@ -15,8 +15,14 @@ export default {}
     justify-content: space-between;
     
     height: 5vh;
-    padding-inline: 5vw;
-    background-color: lightblue;
+    padding: 10px;
+    background-color: #34495e;
+
+    p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #fff;
+  }
 
     a {
         text-decoration: none;
