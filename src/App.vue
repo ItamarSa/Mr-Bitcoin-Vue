@@ -1,4 +1,5 @@
 <script>
+import UserMsg from './cmps/UserMsg.vue'
 import AppHeader from './cmps/AppHeader.vue'
 import AppFooter from './cmps/AppFooter.vue'
 
@@ -6,11 +7,15 @@ export default {
   components: {
     AppHeader,
     AppFooter,
+    UserMsg
   }
 }
 </script>
 
 <template>
+      <Transition>
+        <UserMsg />
+    </Transition>
   <AppHeader />
   <main>
     <RouterView />

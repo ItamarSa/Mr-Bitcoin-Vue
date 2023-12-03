@@ -1,6 +1,6 @@
 <template>
 	<footer class="app-footer">
-        <p>Coffeerights 2023</p>
+        <p>Copyrights 2023</p>
 	</footer>
 </template>
 
@@ -16,7 +16,13 @@ export default {}
     
     height: 5vh;
     padding: 10px;
-    background-color: lightblue;
+    background-color: #34495e;
+
+    p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #fff;
+  }
 
     a {
         text-decoration: none;
