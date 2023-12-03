@@ -1,7 +1,9 @@
 <template>
     <article class="contact-preview">
-        <h2>{{contact.name}}</h2>
-        <p>{{contact.phone}}</p>
+        <div class="contact-details">
+            <h2>{{contact.name}}</h2>
+            <p>{{contact.phone}}</p>
+        </div>
         <img class="photo" v-bind:src="imgUrl()" alt="user-img">
     </article>
 </template>
@@ -23,5 +25,23 @@ export default {
 </script>
 
 <style lang="scss">
+.contact-preview{
+    display: flex;
+    
+    .contact-details{
+
+
+
+
+        
+
+    }
+
+    img{
+        width: 150px;
+
+    }
+}
+
 
 </style>

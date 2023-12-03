@@ -40,7 +40,8 @@ export default {
 <style lang="scss">
 .contact-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    
     gap: 10px;
     margin-block-start: 10px;
     list-style: none;
@@ -50,7 +51,12 @@ export default {
 .contact-list li {
     display: grid;
     padding: 10px;
+    height: 150px;
     background-color: rgb(178, 214, 178);
+    box-shadow: -1px 1px 8px rgba(0, 0, 0, 0.2705882353);
+
+    border-radius: 3px
+
 
     button {
         justify-self: end;

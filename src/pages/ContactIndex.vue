@@ -1,6 +1,5 @@
 <template>
     <section class="contact-index">
-        <h1>contacts</h1>
         <ContactFilter @filter="setFilterBy"/>
         <RouterLink to="contact/edit">
             <button>Add a Contact</button>

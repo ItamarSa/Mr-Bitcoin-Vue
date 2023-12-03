@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
 .contact-details {
     display: flex-wrap;
-    background-color: rgb(252, 215, 147);
+    // background-color: rgb(252, 215, 147);
 
     .photo {
         width: 100px;

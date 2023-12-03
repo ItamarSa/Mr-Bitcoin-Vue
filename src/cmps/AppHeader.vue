@@ -20,8 +20,8 @@ export default {
     align-items: center;
     justify-content:space-between;
     height: 5vh;
+    padding-inline: 5vw;
 
-    padding: 10px;
     background-color: rgb(101, 222, 101);
 
     a {

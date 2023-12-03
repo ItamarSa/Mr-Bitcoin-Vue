@@ -20,7 +20,11 @@ export default {
 
 <style scoped>
 main {
-  min-height: 87.59vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  padding-inline: 5vw;
 }
 
 /* header {

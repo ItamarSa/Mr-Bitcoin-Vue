@@ -15,7 +15,7 @@ export default {}
     justify-content: space-between;
     
     height: 5vh;
-    padding: 10px;
+    padding-inline: 5vw;
     background-color: lightblue;
 
     a {
