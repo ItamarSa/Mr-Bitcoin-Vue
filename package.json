@@ -2,7 +2,10 @@
   "name": "mr-bitcoin-vue",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://{ItamarSa}.github.io/{Mr-Bitcoin-Vue}/",
   "scripts": {
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
@@ -16,6 +19,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.4.0",
+    "gh-pages": "^6.1.0",
     "sass": "^1.69.5",
     "vite": "^4.4.11"
   }
