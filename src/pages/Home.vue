@@ -3,7 +3,7 @@
 		<div class="info" v-if="!loading">
 			<div class="coins">
 				<img v-bind:src="imgUrl()" alt="" class="user-img">
-				<p><b>Hello</b> {{ user ? user.name : '' }} 😊</p>
+				<p><b>Hello</b> {{ user ? user.name : 'guest' }} 😊</p>
 			</div>
 			<div class="coin">
 				<img class="btc-img" src="../assets/imgs/coins.png" alt="">

@@ -2,7 +2,7 @@
 
 import { dbService } from './db.service.js'
 
-const KEY = 'users'
+const KEY = 'usersDB'
 
 export const userService = {
     query,
