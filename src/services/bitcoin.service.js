@@ -3,18 +3,21 @@
 import axios from 'axios'
 const KEY = 'bitcoinData'
 export const bitcoinService = {
-    async getRate() {
+    async getRate(balance) {
         try {
             let data = localStorage.getItem(KEY)
             if (data) {
-                return JSON.parse(data).rate
-            } else {
-                const response = await axios.get('https://blockchain.info/tobtc?currency=USD&value=1')
-                localStorage.setItem(KEY, JSON.stringify({ rate: response.data }))
-                return response.data
-            }
-        } catch (error) {
-            console.error('Error fetching exchange rates:', error)
+                data = JSON.parse(data)
+                if (data.rate){
+                    return data.rate 
+                }
+            } 
+                const response = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=${balance}`)
+            localStorage.setItem(KEY, JSON.stringify({ ...data, rate: response.data }))
+            console.log('response.data:', response.data)
+            return response.data
+        } catch (err) {
+            console.error('Error fetching exchange rates:', err)
             return null
         }
     },
@@ -28,8 +31,8 @@ export const bitcoinService = {
                 localStorage.setItem(KEY, JSON.stringify({ marketPriceHistory: response.data }))
                 return response.data
             }
-        } catch (error) {
-            console.error('Error fetching market price history:', error)
+        } catch (err) {
+            console.error('Error fetching market price history:', err)
             return null
         }
     },
@@ -43,8 +46,8 @@ export const bitcoinService = {
                 localStorage.setItem(KEY, JSON.stringify({ avgBlockSize: response.data }))
                 return response.data
             }
-        } catch (error) {
-            console.error('Error fetching average block size:', error)
+        } catch (err) {
+            console.error('Error fetching average block size:', err)
             return null
         }
     },

@@ -23,7 +23,8 @@ async function query() {
 }
 
 async function get(name) {
-    return await dbService.get(KEY, name)
+    console.log('name', name)
+    return await dbService.getName(KEY, name)
 }
 
 async function remove(id) {
