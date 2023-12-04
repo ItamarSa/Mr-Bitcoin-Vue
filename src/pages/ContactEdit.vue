@@ -1,6 +1,6 @@
 <template>
-    <h1 class="edit-head">Contact edit</h1>
     <section v-if="contact" class="contact-edit">
+        <h1 class="edit-head">{{contact._id ? 'Edit Contact' : 'Add Contact'}} </h1>
         <form @submit.prevent="onSaveContact">
             <input placeholder="Name" v-model="contact.name" type="text" autofocus>
             <input placeholder="email" v-model="contact.email" type="text">
@@ -62,14 +62,20 @@ export default {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     // widows: 50em;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 10%;
+
+    .edit-head{
+            color: #fff;
+            margin: 10px 0 20px;
+        }
 
     form {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 40%;
+
+       
 
         input {
             margin-bottom: 15px;
