@@ -63,7 +63,7 @@ export default {
             min-width: 52px;
             padding: 8px 16px;
             font-size: 0.9em;
-            background-color: #34495e;
+            background-color: #4d6478;
             color: #fff;
             border: none;
             border-radius: 4px;

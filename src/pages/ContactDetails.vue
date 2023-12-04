@@ -50,7 +50,7 @@ export default {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #34495e;
+    background-color: #4d6478;
     /* Use the header's background color */
     padding: 20px;
     border-radius: 8px;

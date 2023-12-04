@@ -24,7 +24,7 @@ export default {
     height: 5vh;
     padding-inline: 5vw;
 
-    background-color: #34495e;
+    background-color: #4d6478;
 
     a {
         font-size: 1.2rem;
