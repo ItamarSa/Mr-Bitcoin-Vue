@@ -3,6 +3,7 @@ import Home from '../pages/Home.vue'
 import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
+import Charts from '../pages/Charts.vue'
 
 const routeOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const routeOptions = {
       path: '/contact/edit/:contactId?',
       name: 'ContactEdit',
       component: ContactEdit,
+    },
+    {
+      path: '/charts',
+      name: 'Charts',
+      component: Charts,
     },
     {
       path: '/about',

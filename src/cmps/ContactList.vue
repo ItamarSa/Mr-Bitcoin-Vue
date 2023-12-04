@@ -7,9 +7,11 @@
                     <button title="Details">👁</button>
                 </RouterLink>
                 <RouterLink :to="`/contact/edit/${contact._id}`">
-                    <button title="Edit">📝</button>
+                    <button title="Edit"><img class="list-btn" src="../assets/imgs/edit.png" alt=""></button>
                 </RouterLink>
-                <button title="Delete" @click="onRemoveContact(contact._id)">❌</button>
+                <button title="Delete" @click="onRemoveContact(contact._id)">
+                    <img class="list-btn" src="../assets/imgs/delete.png" alt="">
+                </button>
             </section>
 
         </li>
@@ -74,6 +76,10 @@ export default {
                 background-color: #2c3e50;
             }
         }
+    }
+
+    .list-btn{
+        width: 15px;
     }
 }
 
