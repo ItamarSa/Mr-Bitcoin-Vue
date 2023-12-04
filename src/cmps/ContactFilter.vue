@@ -1,10 +1,6 @@
 <template>
     <section class="filter">
-        <input 
-            @input="onSetFilterBy" 
-            v-model="filterBy.txt"
-            placeholder="Search"
-            type="text" >
+        <input @input="onSetFilterBy" v-model="filterBy.txt" placeholder="Search" type="text">
     </section>
 </template>
 
@@ -26,7 +22,10 @@ export default {
 <style lang="scss">
 .filter {
     padding: 10px;
-    background-color: lightgray;
-    margin-block: 10px;
+    // border: 1px solid #4d6478;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
 	<footer class="app-footer">
-        <p>Copyrights 2023</p>
+        <p>&copy; 2023 Mr-Bitcoin.com. All rights reserved.</p> | 
+        <RouterLink to="/about">About</RouterLink>
 	</footer>
 </template>
 
@@ -12,11 +13,12 @@ export default {}
 .app-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
+    justify-content: center;
     
     height: 5vh;
     padding: 10px;
-    background-color: #34495e;
+    background-color: #4d6478;
 
     p {
     margin: 0;
@@ -26,6 +28,7 @@ export default {}
 
     a {
         text-decoration: none;
+        color: #fff;
     }
 }
 </style>

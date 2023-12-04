@@ -1,6 +1,6 @@
 <template>
-    <h1>Contact edit</h1>
     <section v-if="contact" class="contact-edit">
+        <h1 class="edit-head">{{contact._id ? 'Edit Contact' : 'Add Contact'}} </h1>
         <form @submit.prevent="onSaveContact">
             <input placeholder="Name" v-model="contact.name" type="text" autofocus>
             <input placeholder="email" v-model="contact.email" type="text">
@@ -25,7 +25,7 @@ export default {
         async onSaveContact() {
             const isUpdate = !!this.$route.params.contactId
             try {
-                await this.$store.dispatch({ type: 'saveContact', contact: this.contact})
+                await this.$store.dispatch({ type: 'saveContact', contact: this.contact })
                 // await contactService.save(this.contact)
 
                 if (isUpdate) {
@@ -33,7 +33,7 @@ export default {
                 } else {
                     eventBus.emit('user-msg', 'Contact Saved')
                 }
-            } catch (err){
+            } catch (err) {
                 eventBus.emit('user-msg', 'Couldn\'t save contact')
             }
 
@@ -53,12 +53,60 @@ export default {
 
 <style lang="scss">
 .contact-edit {
-    display: grid;
-    padding: 10px;
-    background-color: darkseagreen;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #4d6478;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    // widows: 50em;
+    margin: 10%;
 
-    a {
-        justify-self: end;
+    .edit-head{
+            color: #fff;
+            margin: 10px 0 20px;
+        }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 40%;
+
+       
+
+        input {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
     }
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    margin: 50px auto;
+    display: block;
 }
 </style>
