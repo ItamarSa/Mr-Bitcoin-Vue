@@ -1,20 +1,21 @@
 <template>
     <ul class="contact-list">
-        <li v-for="contact in contacts" :key="contact._id">
-            <ContactPreview :contact="contact" />
-            <section class="active">
-                <RouterLink :to="`/contact/${contact._id}`">
-                    <button title="Details">👁</button>
-                </RouterLink>
-                <RouterLink :to="`/contact/edit/${contact._id}`">
-                    <button title="Edit"><img class="list-btn" src="../assets/imgs/edit.png" alt=""></button>
-                </RouterLink>
-                <button title="Delete" @click="onRemoveContact(contact._id)">
-                    <img class="list-btn" src="../assets/imgs/delete.png" alt="">
-                </button>
-            </section>
-
-        </li>
+        <TransitionGroup name="list" tag="ul">
+            <li v-for="contact in contacts" :key="contact._id">
+                <ContactPreview :contact="contact" />
+                <section class="active">
+                    <RouterLink :to="`/contact/${contact._id}`">
+                        <button title="Details">👁</button>
+                    </RouterLink>
+                    <RouterLink :to="`/contact/edit/${contact._id}`">
+                        <button title="Edit"><img class="list-btn" src="../assets/imgs/edit.png" alt=""></button>
+                    </RouterLink>
+                    <button title="Delete" @click="onRemoveContact(contact._id)">
+                        <img class="list-btn" src="../assets/imgs/delete.png" alt="">
+                    </button>
+                </section>
+            </li>
+        </TransitionGroup>
     </ul>
 </template>
 
@@ -40,7 +41,7 @@ export default {
 </script>
 
 <style lang="scss">
-.contact-list {
+ul {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -78,7 +79,7 @@ export default {
         }
     }
 
-    .list-btn{
+    .list-btn {
         width: 15px;
     }
 }
@@ -94,7 +95,7 @@ export default {
 .list-enter-from,
 .list-leave-to {
     opacity: 0;
-    transform: translateX(20px);
+    transform: translateX(30px);
 }
 
 /* ensure leaving items are taken out of layout flow so that moving
