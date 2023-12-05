@@ -41,7 +41,7 @@ export default {
 	methods: {
 		async getUserCoins() {
 			try {
-				this.user = await userService.get('Ochoa')
+				this.user = await userService.getLoggedInUserFromStorage()
 				this.balance = this.user.balance
 				this.rate = await bitcoinService.getRate(this.balance)
 
