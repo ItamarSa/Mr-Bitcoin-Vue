@@ -1,6 +1,6 @@
 <template>
     <header class="app-header">
-        <a href="/:id?">
+        <a href="/">
             <h2>Mr Bitcoin</h2>
         </a>
         <nav>

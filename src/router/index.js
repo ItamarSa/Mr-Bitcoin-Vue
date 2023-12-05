@@ -6,6 +6,7 @@ import ContactEdit from '../pages/ContactEdit.vue'
 import Charts from '../pages/Charts.vue'
 import Signup from '../pages/Signup.vue'
 import Welcome from '../cmps/Welcome.vue'
+import TransferFound from '../pages/TransferFound.vue'
 
 const routeOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -25,10 +26,19 @@ const routeOptions = {
       name: 'signup',
       component: Signup,
     },
+
     {
       path: '/contact',
       name: 'ContactIndex',
       component: ContactIndex,
+      children: [
+        {
+          path: '/contact/transfer/:id',
+          name: 'transferFound',
+          component: TransferFound,
+        },
+
+      ]
     },
     {
       path: '/contact/:contactId',
@@ -36,7 +46,7 @@ const routeOptions = {
       component: ContactDetails,
     },
     {
-      path: '/contact/edit/:contactId?',
+      path: '/edit/:contactId?',
       name: 'ContactEdit',
       component: ContactEdit,
     },

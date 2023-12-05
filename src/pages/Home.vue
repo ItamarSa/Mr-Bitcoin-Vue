@@ -1,5 +1,5 @@
 <template>
-	<main class="container">
+	<main class="main-home">
 		<div class="info" v-if="!loading">
 			<div class="coins">
 				<img v-bind:src="imgUrl()" alt="" class="user-img">
@@ -13,6 +13,9 @@
 				<img class="btc-img" src="../assets/imgs/bitcoin.png" alt="">
 				<p> <b>Your Balance Rate is</b> {{ rate }} <small>BTC</small></p>
 			</div>
+			<div v-if="user.transactions && user.transactions.length > 0">
+				<transactions-list :transactions="slicedTransactions"></transactions-list>
+			</div>
 		</div>
 		<div v-else>
 			<img src="../assets/puff.svg" alt="" class="loader">
@@ -23,6 +26,7 @@
 <script>
 import { userService } from '../services/user.service'
 import { bitcoinService } from '../services/bitcoin.service'
+import TransactionsList from '../cmps/TransactionList.vue'
 
 export default {
 	data() {
@@ -31,12 +35,16 @@ export default {
 			rate: 0,
 			user: null,
 			loading: true,
+			transactions:[],
 		}
 	},
 	async created() {
 		this.users = await userService.query()
 		console.log('users:', this.users)
+		this.user = await userService.getLoggedInUserFromStorage()
 		this.getUserCoins()
+		this.getTransactions()
+		this.sliceList()
 	},
 	methods: {
 		async getUserCoins() {
@@ -53,13 +61,29 @@ export default {
 		},
 		imgUrl() {
 			return `https://robohash.org/${this.user._id}?set=set5`
-		}
+		},
+		getTransactions() {
+            if (this.user && this.user.transactions) {
+                this.transactions = this.user.transactions;
+            }
+        },
+		sliceList() {
+            return this.transactions.slice(0, 3);
+        }
+	},
+	computed: {
+        slicedTransactions() {
+            return this.sliceList();
+        }
+    },
+	components:{
+		TransactionsList,
 	}
 }
 </script>
 
 <style lang="scss">
-.container {
+.main-home {
 	display: flex;
 	align-items: center;
 	justify-content: center;

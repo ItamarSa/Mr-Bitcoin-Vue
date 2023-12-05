@@ -7,8 +7,11 @@
                     <RouterLink :to="`/contact/${contact._id}`">
                         <button title="Details">👁</button>
                     </RouterLink>
-                    <RouterLink :to="`/contact/edit/${contact._id}`">
+                    <RouterLink :to="`/edit/${contact._id}`">
                         <button title="Edit"><img class="list-btn" src="../assets/imgs/edit.png" alt=""></button>
+                    </RouterLink>
+                    <RouterLink :to="`/contact/transfer/${contact._id}`">
+                        <button>💵</button>
                     </RouterLink>
                     <button title="Delete" @click="onRemoveContact(contact._id)">
                         <img class="list-btn" src="../assets/imgs/delete.png" alt="">
@@ -17,6 +20,8 @@
             </li>
         </TransitionGroup>
     </ul>
+    <RouterView />
+
 </template>
 
 <script>
@@ -34,6 +39,7 @@ export default {
             this.$emit('remove', contactId)
         }
     },
+    emits: ['remove'],
     components: {
         ContactPreview,
     }
@@ -63,7 +69,8 @@ ul {
         button {
             margin-top: 10px;
             margin-left: 5px;
-            min-width: 52px;
+            width: 62px;
+            height: 42px;
             padding: 8px 16px;
             font-size: 0.9em;
             background-color: #4d6478;
