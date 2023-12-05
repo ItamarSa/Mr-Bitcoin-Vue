@@ -1,44 +1,79 @@
 <template>
-    <h1 class="details-head">Contact Details</h1>
-    <section v-if="contact" class="contact-details">
-        <div class="left">
-            <img class="user-img" v-bind:src="imgUrl()" alt="user-img">
-            <RouterLink to="/contact">
-                <button>Back</button>
-            </RouterLink>
-        </div>
-        <div class="right">
-            <h2 class="name">{{ contact.name }}</h2>
-            <p class="detail">{{ contact.email }}</p>
-            <p class="detail">{{ contact.phone }}</p>
-            <p class="detail">${{ contact.balance }}</p>
-        </div>
-    </section>
+    <h1 class="title">{{ contact.name }} Details</h1>
+    <main v-if="contact"  class="main-details">
+
+        <section class="contact-details">
+            <div class="left">
+                <img class="user-img" v-bind:src="imgUrl()" alt="user-img">
+                <RouterLink to="/contact">
+                    <button>Back</button>
+                </RouterLink>
+            </div>
+            <div class="right">
+                <h2 class="name">{{ contact.name }}</h2>
+                <p class="detail">{{ contact.email }}</p>
+                <p class="detail">{{ contact.phone }}</p>
+                <p class="detail">${{ contact.balance }}</p>
+            </div>
+        </section>
+            <div v-if="user.transactions && user.transactions.length > 0">
+                <transaction-list :transactions="filteredTransactions"></transaction-list>
+            </div>
+    </main>
     <img v-else src="../assets/puff.svg" alt="" class="loader">
 </template>
 
 <script>
-import { contactService } from '../services/contact.service';
+import { contactService } from '../services/contact.service'
+import { userService } from '../services/user.service'
+
+import TransactionList from '../cmps/TransactionList.vue'
 
 export default {
     data() {
         return {
             contact: null,
+            user: null,
+            transactions: [],
         }
     },
     methods: {
         imgUrl() {
             return `https://robohash.org/${this.contact._id}?set=set5`
+        },
+        async getUser() {
+            return  this.user = await userService.getLoggedInUserFromStorage()
+        },
+        getTransactions() {
+            if (this.user && this.user.transactions) {
+                this.transactions = this.user.transactions;
+            }
+        },
+        getMyTransactions() {
+            return this.filteredTransactions
+        }
+    },
+    computed: {
+        filteredTransactions() {
+            return this.transactions.filter(transaction => transaction.to === this.contact.name);
         }
     },
     async created() {
+        await this.getUser()
         const contactId = this.$route.params.contactId
         this.contact = await contactService.get(contactId)
+        this.getTransactions()
+        this.getMyTransactions()
+        console.log('this.transactions', this.transactions)
+    },
+    components:{
+        TransactionList,
     }
 }
 </script>
 
 <style lang="scss">
+
 .details-head {
     font-size: 2em;
     margin-bottom: 20px;
