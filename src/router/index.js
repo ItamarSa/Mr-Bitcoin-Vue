@@ -4,14 +4,26 @@ import ContactIndex from '../pages/ContactIndex.vue'
 import ContactDetails from '../pages/ContactDetails.vue'
 import ContactEdit from '../pages/ContactEdit.vue'
 import Charts from '../pages/Charts.vue'
+import Signup from '../pages/Signup.vue'
+import Welcome from '../cmps/Welcome.vue'
 
 const routeOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
+      path: '',
+      name: 'Welcome',
+      component: Welcome,
+    },
+    {
+      path: '/:id?',
       name: 'home',
       component: Home,
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup,
     },
     {
       path: '/contact',

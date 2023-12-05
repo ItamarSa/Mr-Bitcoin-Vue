@@ -1,10 +1,10 @@
 <template>
     <header class="app-header">
-        <a href="/">
+        <a href="/:id?">
             <h2>Mr Bitcoin</h2>
         </a>
         <nav>
-            <RouterLink to="/">Home</RouterLink> |
+            <RouterLink to="/:id?">Home</RouterLink> |
             <RouterLink to="/contact">Contacts</RouterLink> |
             <RouterLink to="/charts">Charts</RouterLink> 
         </nav>
