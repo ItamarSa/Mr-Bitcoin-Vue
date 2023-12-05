@@ -1,5 +1,5 @@
 <template>
-    <h1 class="title">{{ contact.name }} Details</h1>
+    <h1 class="title">{{ contact?.name }} Details</h1>
     <main v-if="contact"  class="main-details">
 
         <section class="contact-details">
@@ -55,7 +55,7 @@ export default {
     },
     computed: {
         filteredTransactions() {
-            return this.transactions.filter(transaction => transaction.to === this.contact.name);
+            return this.transactions.filter(transaction => transaction.toId === this.contact._id)
         }
     },
     async created() {
