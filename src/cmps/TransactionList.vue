@@ -1,7 +1,7 @@
 <template>
     <section class="trans-container">
+        <h2 class="trans-title">Your Transactions:</h2>
         <ul class="trans-list">
-            <h2 class="trans-title">Your Transactions:</h2>
             <li class="trans" v-for="transaction in transactions" :key="transaction.AtTime">
                 <p><b>To:</b> {{ transaction.to }}</p>
                 <p><b>Coins:</b> {{ transaction.amount }}</p>
@@ -45,6 +45,7 @@ export default {
 
 <style lang="scss">
 .trans-container {
+    text-align: center;
     border-top: 1px solid black;
     margin-top: 5px;
 
