@@ -31,4 +31,11 @@ export default {}
         color: #fff;
     }
 }
+
+@media (max-width: 600px) {
+    .app-footer {
+        height: 10vh;
+    }
+}
+
 </style>
