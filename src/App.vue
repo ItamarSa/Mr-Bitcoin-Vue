@@ -17,14 +17,14 @@ export default {
         <UserMsg />
     </Transition>
   <AppHeader />
-  <main>
+  <main class="main-app">
     <RouterView />
   </main>
   <AppFooter />
 </template>
 
 <style scoped>
-main {
+.main-app {
   min-height: 90vh;
   display: flex;
   flex-direction: column;
