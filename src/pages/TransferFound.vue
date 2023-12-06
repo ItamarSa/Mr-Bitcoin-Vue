@@ -4,7 +4,7 @@
 
             <form class="coins-form" @submit.prevent="transferCoins">
                 <h1><b>To:</b> {{ contact?.name }}</h1>
-                <h1><b>Your current balance is</b> {{ user?.balance }}</h1>
+                <h1><b>Your current balance is</b> ${{ user?.balance }}</h1>
                 <label for="transfer">Transfer amount</label>
                 <input :max="user?.balance" min="1" required autofocus type="number" placeholder="Enter coins to transfer"
                     v-model="coins">
