@@ -73,7 +73,6 @@ export default {
             &:focus {
                 outline: none;
                 border-color: dodgerblue;
-                /* Change color on focus */
             }
 
             &::placeholder {
