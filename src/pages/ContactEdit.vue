@@ -1,12 +1,17 @@
 <template>
     <section v-if="contact" class="contact-edit">
-        <h1 class="edit-head">{{contact._id ? 'Edit Contact' : 'Add Contact'}} </h1>
+        <h1 class="edit-head">{{ contact._id ? 'Edit Contact' : 'Add Contact' }} </h1>
         <form @submit.prevent="onSaveContact">
             <input placeholder="Name" v-model="contact.name" type="text" autofocus>
             <input placeholder="email" v-model="contact.email" type="text">
             <input placeholder="Phone" v-model="contact.phone" type="text">
             <button>Save</button>
         </form>
+        <div class="action">
+            <RouterLink to="/contact">
+                <button>Back</button>
+            </RouterLink>
+        </div>
     </section>
     <img v-else src="../assets/puff.svg" alt="" class="loader">
 </template>
@@ -64,10 +69,10 @@ export default {
     // widows: 50em;
     margin: 10%;
 
-    .edit-head{
-            color: #fff;
-            margin: 10px 0 20px;
-        }
+    .edit-head {
+        color: #fff;
+        margin: 10px 0 20px;
+    }
 
     form {
         display: flex;
@@ -75,7 +80,7 @@ export default {
         align-items: center;
         width: 40%;
 
-       
+
 
         input {
             margin-bottom: 15px;
@@ -101,6 +106,29 @@ export default {
             }
         }
     }
+
+    .action{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+
+            button{
+
+                padding: 10px 20px;
+                font-size: 1em;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+                
+                &:hover {
+                    background-color: #0056b3;
+                }
+            }
+        }
 }
 
 .loader {

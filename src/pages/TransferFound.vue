@@ -1,13 +1,20 @@
 <template>
-    <main >
+    <main>
         <section class="transfer">
 
             <form class="coins-form" @submit.prevent="transferCoins">
-                <h1><b>To:</b> {{contact?.name}}</h1>
-                <h1><b>Your current balance is</b> {{user?.balance}}</h1>
+                <h1><b>To:</b> {{ contact?.name }}</h1>
+                <h1><b>Your current balance is</b> {{ user?.balance }}</h1>
                 <label for="transfer">Transfer amount</label>
-                <input type="number" placeholder="Enter coins to transfer" v-model="coins">
-                <button>Transfer coins</button>
+                <input :max="user?.balance" min="1" required autofocus type="number" placeholder="Enter coins to transfer"
+                    v-model="coins">
+                    
+                    <button>Transfer coins</button>
+                    <div class="action">
+                    <RouterLink to="/contact">
+                        <button>Back</button>
+                    </RouterLink>
+                </div>
             </form>
         </section>
     </main>
@@ -90,19 +97,20 @@ export default {
     flex-direction: column;
     align-items: center;
     padding: 50px;
-    
-    h2{
+
+    h2 {
         margin-bottom: 10px;
     }
 
     form {
         display: flex;
         flex-direction: column;
-        
+
         label {
             margin-top: 1em;
         }
-        input{
+
+        input {
             width: 100%;
             padding: 10px;
             margin: 8px 0;
@@ -112,19 +120,26 @@ export default {
         }
 
         button {
-            background-color:  #4d6478;
-            color: white; 
-            border: none; 
-            padding: 10px 20px; 
+            background-color: #4d6478;
+            color: white;
+            border: none;
+            padding: 10px 20px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             margin: 10px 0;
-            border-radius: 5px; 
+            border-radius: 5px;
+
             &:hover {
-                background-color:#2c3e50;
+                background-color: #2c3e50;
             }
+        }
+
+        .action{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     }
 }
