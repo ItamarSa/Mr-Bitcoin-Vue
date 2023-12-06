@@ -1,21 +1,26 @@
 <template>
 	<main class="main-home">
-		<div class="info" v-if="!loading">
-			<div class="coins">
+		<div class="home-page" v-if="!loading">
+			<section class="bit-gif">
+				<img src="../assets/imgs/bit-gif.gif" alt="">
+			</section>
+			<section class="info">
 				<img v-bind:src="imgUrl()" alt="" class="user-img">
-				<p><b>Hello</b> {{ user ? user.name : 'guest' }} 😊</p>
-			</div>
-			<div class="coin">
-				<img class="btc-img" src="../assets/imgs/coins.png" alt="">
-				<p> <b>Your Balance</b> ${{ balance }}</p>
-			</div>
-			<div class="coin">
-				<img class="btc-img" src="../assets/imgs/bitcoin.png" alt="">
-				<p> <b>Your Balance Rate is</b> {{ rate }} <small>BTC</small></p>
-			</div>
-			<div v-if="user.transactions && user.transactions.length > 0">
-				<transactions-list :transactions="slicedTransactions"></transactions-list>
-			</div>
+				<div class="coin">
+					<p><strong>Hello</strong> {{ user ? user.name : 'guest' }} 😊</p>
+				</div>
+				<div class="coin">
+					<img class="btc-img" src="../assets/imgs/coins.png" alt="">
+					<p> <strong>Balance</strong> ${{ balance }}</p>
+				</div>
+				<div class="coin">
+					<img class="btc-img" src="../assets/imgs/bitcoin.png" alt="">
+					<p> <strong>Balance Rate</strong> {{ rate }} <small>BTC</small></p>
+				</div>
+				<div v-if="user.transactions && user.transactions.length > 0">
+					<transactions-list :transactions="slicedTransactions"></transactions-list>
+				</div>
+			</section>
 		</div>
 		<div v-else>
 			<img src="../assets/puff.svg" alt="" class="loader">
@@ -35,7 +40,7 @@ export default {
 			rate: 0,
 			user: null,
 			loading: true,
-			transactions:[],
+			transactions: [],
 		}
 	},
 	async created() {
@@ -63,26 +68,36 @@ export default {
 			return `https://robohash.org/${this.user._id}?set=set5`
 		},
 		getTransactions() {
-            if (this.user && this.user.transactions) {
-                this.transactions = this.user.transactions;
-            }
-        },
+			if (this.user && this.user.transactions) {
+				this.transactions = this.user.transactions
+			}
+		},
 		sliceList() {
-            return this.transactions.slice(0, 3);
-        }
+			return this.transactions.slice(0, 3)
+		}
 	},
 	computed: {
-        slicedTransactions() {
-            return this.sliceList();
-        }
-    },
-	components:{
+		slicedTransactions() {
+			return this.sliceList()
+		}
+	},
+	components: {
 		TransactionsList,
 	}
 }
 </script>
 
 <style lang="scss">
+.home-page {
+	display: flex;
+	align-items: center;
+
+	.bit-gif {
+		width: 50%;
+		padding: 2em;
+	}
+}
+
 .main-home {
 	display: flex;
 	align-items: center;
@@ -97,13 +112,14 @@ export default {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
-		border: 1px solid black;
+		justify-content: flex-start;
+		// border: 1px solid black;
 		padding: 25px;
+		width: 50%;
 
 		.user-img {
-			width: 100px;
-			height: 100px;
+			width: 15em;
+			// height: 100px;
 		}
 
 		p {
@@ -122,6 +138,20 @@ export default {
 				height: 2em;
 				width: 2em;
 			}
+		}
+	}
+}
+
+@media (max-width: 600px) {
+	.home-page {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		flex-direction: column-reverse;
+
+		.info{
+			width: 100%;
+			padding: 0;
 		}
 	}
 }

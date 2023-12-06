@@ -19,9 +19,8 @@ export default {
             required: true,
         }
     },
-
     created() {
-        console.log('this.transactions', this.transactions);
+        console.log('this.transactions', this.transactions)
     },
     methods: {
         formatDate(value) {
@@ -33,12 +32,11 @@ export default {
                 minute: 'numeric',
                 hour12: true
             };
-            const time = new Date(value);
-            if (isNaN(time)) return value; // If it's an invalid date, return original value
-            const formattedDateTime = time.toLocaleString('en-US', options);
-            return formattedDateTime;
+            const time = new Date(value)
+            if (isNaN(time)) return value
+            const formattedDateTime = time.toLocaleString('en-US', options)
+            return formattedDateTime
         },
-
     }
 }
 </script>
@@ -59,7 +57,7 @@ export default {
         .trans {
             display: flex;
             align-items: flex-start;
-            width: 50vw;
+            // width: 50vw;
 
         }
     }
