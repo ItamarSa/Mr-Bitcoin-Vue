@@ -27,8 +27,6 @@ export default {
   },
   async created() {
     this.loggedInUser = userService.getLoggedInUserFromStorage()
-    console.log('this.loggedInUser', this.loggedInUser)
-
   }
 }
 </script>
