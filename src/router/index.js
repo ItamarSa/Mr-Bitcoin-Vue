@@ -12,7 +12,7 @@ const routeOptions = {
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '',
+      path: '/',
       name: 'Welcome',
       component: Welcome,
     },
