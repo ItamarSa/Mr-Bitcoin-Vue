@@ -69,4 +69,10 @@ nav a.router-link-exact-active {
 nav a:first-of-type {
   border: 0;
 } */
+
+@media (max-width: 600px) {
+  .main-app {
+  min-height: 80vh;
+}
+}
 </style>
