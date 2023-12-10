@@ -75,7 +75,6 @@ export default {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    // widows: 50em;
     margin: 10%;
 
     .edit-head {
@@ -89,12 +88,10 @@ export default {
         align-items: center;
         width: 40%;
 
-        .edit-input{
+        .edit-input {
             display: flex;
             align-items: baseline;
         }
-
-
 
         input {
             margin-bottom: 15px;
@@ -122,28 +119,28 @@ export default {
         }
     }
 
-    .action{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
+    .action {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
 
-            button{
+        button {
 
-                padding: 10px 20px;
-                font-size: 1em;
-                background-color: #007bff;
-                color: #fff;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
-                
-                &:hover {
-                    background-color: #0056b3;
-                }
+            padding: 10px 20px;
+            font-size: 1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #0056b3;
             }
         }
+    }
 }
 
 .loader {
@@ -155,11 +152,11 @@ export default {
 
 @media (max-width: 600px) {
     .contact-edit {
-    margin: 10% 0;
+        margin: 10% 0;
 
-    form input {
-        width:max-content;
+        form input {
+            width: max-content;
+        }
     }
-	}
 }
 </style>

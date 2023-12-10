@@ -18,7 +18,6 @@ export const userService = {
 
 async function query() {
     var users = await dbService.query(KEY)
-    console.log(users)
     if (!users || !users.length) {
         users = _createDefaultUsers()
         await dbService.insert(KEY, users)
@@ -27,7 +26,6 @@ async function query() {
 }
 
 async function get(name) {
-    console.log('name', name)
     return await dbService.getName(KEY, name)
 }
 
@@ -59,7 +57,7 @@ function _createDefaultUsers() {
 
 function _createUser(_id, name, balance, transactions) {
     return {
-       _id, name, balance, transactions
+        _id, name, balance, transactions
     }
 }
 

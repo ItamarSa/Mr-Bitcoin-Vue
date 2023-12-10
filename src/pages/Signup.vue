@@ -15,22 +15,16 @@ export default {
     data() {
         return {
             userName: ''
-
         }
     },
     methods: {
         async getUserByName() {
             try {
                 let user = await userService.get(this.userName)
-                console.log('user', user)
                 if (!user) {
-                    console.log('User not found')
                     user = userService.getEmptyUser()
                     user.name = this.userName
                     user = await userService.save(user)
-                    console.log('user', user)
-                } else {
-                    console.log('User exists:', user)
                 }
                 userService.saveLoggedInUser(user)
                 this.$router.push(`/:${user._id}`)
@@ -82,7 +76,7 @@ export default {
 
         button {
             padding: 8px 20px;
-            background-color:#4d6478;
+            background-color: #4d6478;
             color: white;
             border: none;
             border-radius: 4px;
@@ -101,4 +95,5 @@ export default {
         }
 
     }
-}</style>
+}
+</style>

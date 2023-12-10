@@ -29,7 +29,6 @@ export const bitcoinService = {
             if (data) {
                 data = JSON.parse(data)
                 if (data.marketPriceHistory) {
-                    // Extract the first 50 values from the stored data
                     const first50Values = data.marketPriceHistory.values.slice(0, 50)
                     return { ...data.marketPriceHistory, values: first50Values }
                 }
@@ -38,7 +37,6 @@ export const bitcoinService = {
             const first50Values = response.data.values.slice(0, 50)
 
             localStorage.setItem(KEY, JSON.stringify({ marketPriceHistory: response.data, values: first50Values }))
-
             return { ...response.data, values: first50Values }
         } catch (err) {
             console.error('Error fetching market price history:', err)

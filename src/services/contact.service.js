@@ -15,7 +15,6 @@ export const contactService = {
 async function query() {
     var contacts = await dbService.query(KEY)
 
-    console.log(contacts)
     if (!contacts || !contacts.length) {
         contacts = _createContacts()
         await dbService.insert(KEY, contacts)
@@ -47,12 +46,10 @@ function getEmptyContact() {
 
 function _createDefaultContacts() {
     return [
-        
-        _createContact('Ochoa Hyde','ochoahyde@renovize.com', '+1 (968) 593-3824', 50),
-        _createContact('Hallie Mclean','halliemclean@renovize.com', '+1 (948) 464-2888', 73),
-        _createContact('Parsons Norris','parsonsnorris@renovize.com', '+1 (958) 502-3495', 63),
-        _createContact('Rachel Lowe','halliemclean@renovize.com', '+1 (911) 475-2312', 100),
-
+        _createContact('Ochoa Hyde', 'ochoahyde@renovize.com', '+1 (968) 593-3824', 50),
+        _createContact('Hallie Mclean', 'halliemclean@renovize.com', '+1 (948) 464-2888', 73),
+        _createContact('Parsons Norris', 'parsonsnorris@renovize.com', '+1 (958) 502-3495', 63),
+        _createContact('Rachel Lowe', 'halliemclean@renovize.com', '+1 (911) 475-2312', 100),
     ]
 }
 

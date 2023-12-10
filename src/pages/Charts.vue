@@ -10,10 +10,10 @@
   
 <script>
 import { Bar, Pie, Line } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement,PointElement, CategoryScale, LinearScale, ArcElement, LineElement } from 'chart.js'
+import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, PointElement, CategoryScale, LinearScale, ArcElement, LineElement } from 'chart.js'
 import { bitcoinService } from '../services/bitcoin.service'
 
-ChartJS.register(Title, Tooltip, Legend, PointElement,BarElement, CategoryScale, LinearScale,LineElement, ArcElement)
+ChartJS.register(Title, Tooltip, Legend, PointElement, BarElement, CategoryScale, LinearScale, LineElement, ArcElement)
 
 export default {
     name: 'Charts',
@@ -38,17 +38,14 @@ export default {
     async mounted() {
         try {
             const marketPriceData = await bitcoinService.getMarketPriceHistory()
-            console.log('Market Price Data:', marketPriceData)
             this.chartData.marketPrice = this.processChartData(marketPriceData)
             this.loaded.marketPrice = true
 
             const avgBlockSizeData = await bitcoinService.getAvgBlockSize()
-            console.log('Avg Block Size Data:', avgBlockSizeData)
             this.chartData.avgBlockSize = this.processLineChartData(avgBlockSizeData)
             this.loaded.avgBlockSize = true
 
             const pieChartData = await bitcoinService.getMarketPriceHistory()
-            console.log('pie Chart Data:', pieChartData)
             this.chartData.pieChart = this.processPieChartData(pieChartData)
             this.loaded.pieChart = true
         } catch (error) {
