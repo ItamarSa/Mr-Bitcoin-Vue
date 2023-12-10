@@ -2,9 +2,18 @@
     <section v-if="contact" class="contact-edit">
         <h1 class="edit-head">{{ contact._id ? 'Edit Contact' : 'Add Contact' }} </h1>
         <form @submit.prevent="onSaveContact">
-            <input placeholder="Name" v-model="contact.name" type="text" autofocus>
-            <input placeholder="email" v-model="contact.email" type="text">
-            <input placeholder="Phone" v-model="contact.phone" type="text">
+            <div class="edit-input">
+                <label for="name">👤</label>
+                <input placeholder="Name" v-model="contact.name" type="text" autofocus>
+            </div>
+            <div class="edit-input">
+                <label for="name">📧</label>
+                <input placeholder="email" v-model="contact.email" type="text">
+            </div>
+            <div class="edit-input">
+                <label for="name">☎️</label>
+                <input placeholder="Phone" v-model="contact.phone" type="text">
+            </div>
             <button>Save</button>
         </form>
         <div class="action">
@@ -80,10 +89,16 @@ export default {
         align-items: center;
         width: 40%;
 
+        .edit-input{
+            display: flex;
+            align-items: baseline;
+        }
+
 
 
         input {
             margin-bottom: 15px;
+            margin-left: 10px;
             padding: 10px;
             border-radius: 4px;
             border: 1px solid #ccc;
@@ -136,5 +151,15 @@ export default {
     height: 100px;
     margin: 50px auto;
     display: block;
+}
+
+@media (max-width: 600px) {
+    .contact-edit {
+    margin: 10% 0;
+
+    form input {
+        width:max-content;
+    }
+	}
 }
 </style>
