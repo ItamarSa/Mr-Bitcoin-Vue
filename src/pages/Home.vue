@@ -45,7 +45,6 @@ export default {
 	},
 	async created() {
 		this.users = await userService.query()
-		console.log('users:', this.users)
 		this.user = await userService.getLoggedInUserFromStorage()
 		this.getUserCoins()
 		this.getTransactions()
@@ -113,13 +112,11 @@ export default {
 		flex-direction: column;
 		align-items: center;
 		justify-content: flex-start;
-		// border: 1px solid black;
 		padding: 25px;
 		width: 50%;
 
 		.user-img {
 			width: 15em;
-			// height: 100px;
 		}
 
 		p {
@@ -132,7 +129,6 @@ export default {
 		.coin {
 			display: flex;
 			align-items: center;
-
 
 			.btc-img {
 				height: 2em;
@@ -149,7 +145,7 @@ export default {
 		align-items: center;
 		flex-direction: column-reverse;
 
-		.info{
+		.info {
 			width: 100%;
 			padding: 0;
 		}

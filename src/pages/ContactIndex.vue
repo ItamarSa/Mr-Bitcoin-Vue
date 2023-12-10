@@ -18,10 +18,7 @@ import ContactFilter from '../cmps/ContactFilter.vue'
 export default {
     data() {
         return {
-            // contacts: null,
             filterBy: { txt: '' }
-
-
         }
     },
     methods: {
@@ -31,13 +28,10 @@ export default {
                 eventBus.emit('user-msg', `Contact ${contactId} deleted...`)
             } catch (err) {
                 eventBus.emit('user-msg', 'Couldn\'t remove contact..')
-
             }
             // await contactService.remove(contactId)
             // const idx = this.contacts.findIndex(contact => contact._id === contactId)
             // this.contacts.splice(idx, 1)
-
-
         },
         setFilterBy(filterBy) {
             this.filterBy = filterBy
@@ -59,8 +53,6 @@ export default {
         } catch (err) {
             eventBus.emit('user-msg', 'Couldn\'t get contacts..')
         }
-
-
     },
     components: {
         ContactList,

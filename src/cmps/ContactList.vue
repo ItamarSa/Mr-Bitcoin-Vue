@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import ContactPreview from '../cmps/ContactPreview.vue';
+import ContactPreview from '../cmps/ContactPreview.vue'
 
 export default {
     props: {
@@ -93,7 +93,6 @@ ul {
 
 
 .list-move,
-/* apply transition to moving elements */
 .list-enter-active,
 .list-leave-active {
     transition: all 0.5s ease;
@@ -105,8 +104,6 @@ ul {
     transform: translateX(30px);
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
 .list-leave-active {
     position: absolute;
 }

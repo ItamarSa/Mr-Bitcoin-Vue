@@ -13,9 +13,9 @@ export default {
 </script>
 
 <template>
-      <Transition>
-        <UserMsg />
-    </Transition>
+  <Transition>
+    <UserMsg />
+  </Transition>
   <AppHeader />
   <main class="main-app">
     <RouterView />
@@ -31,6 +31,7 @@ export default {
 
   padding-inline: 5vw;
 }
+
 .v-enter-active,
 .v-leave-active {
   transition: opacity 0.5s ease;
@@ -40,39 +41,10 @@ export default {
 .v-leave-to {
   opacity: 0;
 }
-/* header {
-  line-height: 1.5;
-  max-height: 100vh;
-} */
-/* 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
-} */
-/* 
-nav a.router-link-exact-active {
-  color: var(--color-text);
-} */
-
-/* nav a.router-link-exact-active:hover {
-  background-color: transparent;
-} */
-
-/* nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-} */
 
 @media (max-width: 600px) {
   .main-app {
-  min-height: 80vh;
-}
+    min-height: 80vh;
+  }
 }
 </style>

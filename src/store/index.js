@@ -25,9 +25,7 @@ const storeOptions = {
                 console.log(err)
                 throw err
             }
-
         }
-
     },
     getters: {
 

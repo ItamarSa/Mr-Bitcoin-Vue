@@ -32,6 +32,4 @@ export default {
         width: 80px;
     }
 }
-
-
 </style>

@@ -1,16 +1,14 @@
 <template>
     <main>
         <section class="transfer">
-
             <form class="coins-form" @submit.prevent="transferCoins">
                 <h1><b>To:</b> {{ contact?.name }}</h1>
                 <h1><b>Your current balance is</b> ${{ user?.balance }}</h1>
                 <label for="transfer">Transfer amount</label>
                 <input :max="user?.balance" min="1" required autofocus type="number" placeholder="Enter coins to transfer"
                     v-model="coins">
-                    
-                    <button>Transfer coins</button>
-                    <div class="action">
+                <button>Transfer coins</button>
+                <div class="action">
                     <RouterLink to="/contact">
                         <button>Back</button>
                     </RouterLink>
@@ -21,8 +19,8 @@
 </template>
 
 <script>
-import { contactService } from '../services/contact.service';
-import { userService } from '../services/user.service';
+import { contactService } from '../services/contact.service'
+import { userService } from '../services/user.service'
 
 export default {
     data() {
@@ -31,18 +29,12 @@ export default {
             contact: null,
             contactId: '',
             coins: ''
-
         }
-
-
     },
     async created() {
         await this.getUser()
-        console.log('this.user', this.user)
         this.getContactId()
-        console.log('this.contactId', this.contactId)
         await this.getContact()
-        console.log('this.contact', this.contact)
     },
     methods: {
         async getUser() {
@@ -57,7 +49,6 @@ export default {
         async transferCoins() {
             if (this.user.balance >= this.coins && this.coins > 0) {
                 try {
-                    console.log('this.coins', this.coins)
                     this.user.balance -= this.coins
                     this.contact.balance += this.coins
                     const transaction = {
@@ -72,7 +63,6 @@ export default {
                     await contactService.save(this.contact)
                     this.coins = ''
                     this.$router.push(`/contact/${this.contact._id}`)
-
                 } catch (err) {
                     console.log('err', err)
                 }
@@ -136,7 +126,7 @@ export default {
             }
         }
 
-        .action{
+        .action {
             display: flex;
             flex-direction: column;
             align-items: center;

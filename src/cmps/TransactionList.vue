@@ -19,9 +19,6 @@ export default {
             required: true,
         }
     },
-    created() {
-        console.log('this.transactions', this.transactions)
-    },
     methods: {
         formatDate(value) {
             const options = {
@@ -31,7 +28,7 @@ export default {
                 hour: 'numeric',
                 minute: 'numeric',
                 hour12: true
-            };
+            }
             const time = new Date(value)
             if (isNaN(time)) return value
             const formattedDateTime = time.toLocaleString('en-US', options)
@@ -51,6 +48,7 @@ export default {
         margin: 0;
 
     }
+
     .trans-list {
         margin-top: 5px;
 
@@ -61,7 +59,5 @@ export default {
 
         }
     }
-
-
 }
 </style>

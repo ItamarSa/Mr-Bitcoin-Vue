@@ -1,7 +1,6 @@
 <template>
     <h1 class="title">{{ contact?.name }} Details</h1>
-    <main v-if="contact"  class="main-details">
-
+    <main v-if="contact" class="main-details">
         <section class="contact-details">
             <div class="left">
                 <img class="user-img" v-bind:src="imgUrl()" alt="user-img">
@@ -16,9 +15,9 @@
                 <p class="detail">${{ contact.balance }}</p>
             </div>
         </section>
-            <div v-if="user.transactions && user.transactions.length > 0">
-                <transaction-list :transactions="filteredTransactions"></transaction-list>
-            </div>
+        <div v-if="user.transactions && user.transactions.length > 0">
+            <TransactionList :transactions="filteredTransactions"></TransactionList>
+        </div>
     </main>
     <img v-else src="../assets/puff.svg" alt="" class="loader">
 </template>
@@ -42,7 +41,7 @@ export default {
             return `https://robohash.org/${this.contact._id}?set=set5`
         },
         async getUser() {
-            return  this.user = await userService.getLoggedInUserFromStorage()
+            return this.user = await userService.getLoggedInUserFromStorage()
         },
         getTransactions() {
             if (this.user && this.user.transactions) {
@@ -64,16 +63,14 @@ export default {
         this.contact = await contactService.get(contactId)
         this.getTransactions()
         this.getMyTransactions()
-        console.log('this.transactions', this.transactions)
     },
-    components:{
+    components: {
         TransactionList,
     }
 }
 </script>
 
 <style lang="scss">
-
 .details-head {
     font-size: 2em;
     margin-bottom: 20px;
@@ -81,12 +78,10 @@ export default {
 
 .contact-details {
     display: flex;
-    // flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     background-color: #4d6478;
-    /* Use the header's background color */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -117,9 +112,7 @@ export default {
         padding: 10px 20px;
         font-size: 1em;
         background-color: #007bff;
-        /* Use the header's button color */
         color: #fff;
-        /* Set text color to white */
         border: none;
         border-radius: 4px;
         cursor: pointer;
@@ -127,11 +120,8 @@ export default {
 
         &:hover {
             background-color: #0056b3;
-            /* Darken the button on hover */
         }
     }
-
-
 }
 
 .loader {
